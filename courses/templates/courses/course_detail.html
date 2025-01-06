@@ -1,0 +1,8 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<h1>{{ course.title|title }}</h1>
+<p>{{ course.description }}</p>
+<a href="{% url 'main:contents:course_contents' course.id %}">View Contents</a>
+<a href="{% url 'main:courses:courses' %}">Back to Courses</a>
+{% endblock %}

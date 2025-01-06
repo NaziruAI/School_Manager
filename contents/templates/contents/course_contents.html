@@ -1,0 +1,41 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+    <h1>Contents for {{ course.title|title }}</h1>
+    <p>{{ course.description }}</p>
+
+    <ul>
+        {% for content in contents %}
+            <li>
+                <h2>{{ content.title }}</h2>
+                <p>{{ content.description }}</p>
+
+                {% if content.content_type == 'text' %}
+                    <p>{{ content.text_content }}</p>
+                {% elif content.content_type == 'image' %}
+                    <img src="{{ content.image.url }}" alt="{{ content.title|title }}">
+                {% elif content.content_type == 'video' %}
+                    <video controls>
+                        <source src="{{ content.video.url }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                {% endif %}
+
+                <!-- Updated logic for uploaded_by -->
+                <small>
+                    Uploaded by: 
+                    {% if content.uploaded_by %}
+                        {{ content.uploaded_by.username }}
+                    {% else %}
+                        Unknown
+                    {% endif %}
+                </small>
+                <small> | Uploaded on: {{ content.created_at }}</small>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'main:courses:course_detail' course.id %}">Back</a>
+
+{% endblock %}

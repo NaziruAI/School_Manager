@@ -1,0 +1,19 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<h1>Skills</h1>
+
+{% if courses %}
+    <ul>
+        {% for course in courses %}
+            <li>
+                <a href="{% url 'main:courses:course_detail' course.id %}">{{ course.title|title }}</a>
+                <p>{{ course.description }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No skill added yet.</p>
+{% endif %}
+
+{% endblock %}

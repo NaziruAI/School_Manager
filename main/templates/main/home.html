@@ -1,0 +1,53 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+<main>
+    <section id="banner" class="container-fluid bg-primary text-white text-center py-5">
+        <h2 class="display-4">LIGHT COUNSELLING CENTER AND EDUCATIONAL SERVICES</h2>
+        <p class="lead">MOTTO: <strong></strong>A healthy life awaits for you</p>
+        <a href="#register" class="btn btn-light btn-lg">Get Started</a>
+    </section>
+
+    <!-- Image Gallery Section -->
+    <section id="gallery" class="container py-5">
+        <h2 class="text-center mb-4">Awesome! See Our Great Skills</h2>
+        <div class="row">
+            {% for image in gallery_images %}
+            <div class="col-lg-3 col-md-4 col-6 mb-4">
+                <div class="card">
+                    <!-- Use class "img-gallery" to style -->
+                    <img src="{{ image.image.url }}" class="card-img-top img-fluid img-gallery" alt="{{ image.title }}">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="about" class="container py-5">
+        <h2 class="text-center">About School Manager</h2>
+        <p class="text-center">School Manager is a platform where students and teachers collaborate for effective learning.</p>
+    </section>
+
+    <section id="courses" class="container py-5">
+        <h2 class="text-center">Featured Courses</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <h4>Python Programming</h4>
+                <p>Master programming with Python.</p>
+            </div>
+            <div class="col-md-4">
+                <h4>Web Development</h4>
+                <p>Build websites from scratch.</p>
+            </div>
+            <div class="col-md-4">
+                <h4>Data Science</h4>
+                <p>Learn data analysis and visualization.</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="bg-dark text-white text-center py-4">
+    <p>&copy; 2025 School Manager. All rights reserved.</p>
+</footer>
+{% endblock content %}
