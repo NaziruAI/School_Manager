@@ -32,7 +32,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # 'users',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,6 +41,7 @@ INSTALLED_APPS = [
     # third party apps
      'django_bootstrap5',
     # my apps
+    'users',
     'main',
     'courses',
     'contents',
@@ -62,7 +62,7 @@ ROOT_URLCONF = 'school_management.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],  # Ensure your templates directory is here
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -74,6 +74,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'school_management.wsgi.application'
 
@@ -135,4 +136,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/gallery/'  # URL prefix for serving media files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'gallery')  # Folder where media files are stored
 
-# AUTH_USER_MODEL = 'users.CustomUser'
+LOGIN_REDIRECT_URL = '/'  # Redirect after successful login
+LOGOUT_REDIRECT_URL = '/'  # Redirect after logout
+

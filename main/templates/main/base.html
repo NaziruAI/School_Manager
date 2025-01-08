@@ -50,17 +50,17 @@
                         <a class="nav-link" href="{% url 'main:courses:courses' %}">Courses</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link">Hello, {{ user.username }}.</a>
+                        <a class="nav-link">Hello, {{ user.username|title }}.</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Log out</a>
+                        <a class="nav-link" href="{% url 'users:logout' %}">Log out</a>
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Log in</a>
+                        <a class="nav-link" href="{% url 'users:login'%}">Log in</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Register</a>
+                        <a class="nav-link" href="{% url 'users:register' %}">Register</a>
                     </li>
                     
                 {% endif %}
