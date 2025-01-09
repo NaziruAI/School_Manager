@@ -23,20 +23,22 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'main:home' %}">LICOCAES</a>
+        <a class="navbar-brand" href="{% url 'main:home' %}">Light CES</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
             aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbar">
-           <!--  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 {% if user.is_authenticated %}
-	                <li class="nav-item">
-	                    <a class="nav-link" href="#">Add New Blog</a>
-	                </li>
+                    {% if user.is_staff or user.is_superuser %}
+                        <li class="nav-item">
+                            <a href="{% url 'users:admin_dashboard' %}" class="btn btn-primary">Dashboard</a>
+                        </li>
+                    {% endif %}
                 {% endif %}
-            </ul> -->
+            </ul>
 
             <ul class="navbar-nav ms-auto">
                 {% if user.is_authenticated %}
