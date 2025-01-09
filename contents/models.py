@@ -1,6 +1,7 @@
+# contents/models.py
 from django.db import models
 from django.contrib.auth.models import User
-
+from courses.models import Course  # Reference the `Course` model here
 
 class Content(models.Model):
     # Content metadata
@@ -14,7 +15,7 @@ class Content(models.Model):
     content_type = models.CharField(max_length=10, choices=content_type_choices)
 
     # Related to a course and the user who uploaded it
-    course = models.ForeignKey('courses.Course', on_delete=models.CASCADE, related_name='contents')
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='contents')
     uploaded_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
     # File or text content
