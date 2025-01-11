@@ -15,3 +15,7 @@ from .models import GalleryImage
 def home(request):
     gallery_images = GalleryImage.objects.all()
     return render(request, 'main/home.html', {'gallery_images': gallery_images})
+
+def about(request):
+    """Render the About page."""
+    return render(request, 'main/about.html') 

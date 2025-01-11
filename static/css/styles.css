@@ -1,0 +1,66 @@
+.navbar-brand{
+    font-weight: bold;
+}
+
+.nav-link {
+    color: #FFF !important; /* Change the text color to gold */
+    font-weight: bold; /* Make the text bold */
+    text-transform: uppercase; /* Transform text to uppercase */
+    text-decoration: none; /* Remove underline */
+}
+
+.nav-link:hover {
+    color: #FFA500 !important; /* Change color to orange on hover */
+    background-color: #000000 !important; /* Add a black background on hover */
+    border-radius: 5px; /* Make the hover background slightly rounded */
+    padding: 0 5px; /* Add some padding */
+}
+
+.navbar-dark, footer {
+    background-color: #34495e
+    /* background-color: #2c3e50; */
+}
+
+main {
+    flex-grow: 1; /* Let main take up remaining space */
+}
+
+html, body {
+    height: 100%; /* Ensure full page height */
+    margin: 0; /* Remove default margin */
+    display: flex;
+    flex-direction: column;
+    padding-top: 60px; 
+}
+
+.container {
+    flex: 1; /* Ensures the content area grows to fill available space */
+    padding-bottom: 30px;
+}
+
+footer {
+    color: white;
+    text-align: center;
+    font-weight: bold; /* Make the text bold */
+    padding: 20px; /* Can adjust padding based on your preference */
+    width: 100%;
+    /* Make sure footer does not overlap with content, even if content is less */
+    margin-top: auto; /* Pushes footer to the bottom */
+}
+
+footer p {
+    margin: 0; /* Ensure there's no space around the text inside footer */
+}
+
+/* Fix navbar overlap issue
+.navbar {
+    position: fixed;
+    top: 10px;
+    left: 0;
+    right: 0;
+    z-index: 10; /* To make sure it appears on top of content */
+} */
+
+.container {
+    padding-top: 70px; /* Provide enough space under the navbar */
+}

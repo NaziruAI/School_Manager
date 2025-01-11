@@ -139,3 +139,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'gallery')  # Folder where media files are s
 LOGIN_REDIRECT_URL = '/'  # Redirect after successful login
 LOGOUT_REDIRECT_URL = '/'  # Redirect after logout
 
+# Directory to collect static files during deployment
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Directories to look for static files during development
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
