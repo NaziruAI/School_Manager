@@ -1,19 +1,27 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
-<h1>Skills</h1>
+<div class="container py-5">
+    <div class="text-center mb-4">
+        <h1 class="display-4">Skills</h1>
+    </div>
 
-{% if courses %}
-    <ul>
-        {% for course in courses %}
-            <li>
-                <a href="{% url 'main:courses:course_detail' course.id %}">{{ course.title|title }}</a>
-                <p>{{ course.description }}</p>
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No skill added yet.</p>
-{% endif %}
-
+    {% if courses %}
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+            {% for course in courses %}
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ course.title|title }}</h5>
+                        <p class="card-text">{{ course.description }}</p>
+                        <a href="{% url 'main:courses:course_detail' course.id %}" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-center">No skill added yet.</p>
+    {% endif %}
+</div>
 {% endblock %}

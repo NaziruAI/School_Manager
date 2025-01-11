@@ -1,41 +1,52 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
+<div class="container py-5">
+    <div class="text-center mb-4">
+        <h1 class="display-4">Contents for {{ course.title|title }}</h1>
+        <p class="lead">{{ course.description }}</p>
+    </div>
 
-    <h1>Contents for {{ course.title|title }}</h1>
-    <p>{{ course.description }}</p>
+    {% if contents %}
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            {% for content in contents %}
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ content.title }}</h5>
+                        <p class="card-text">{{ content.description }}</p>
 
-    <ul>
-        {% for content in contents %}
-            <li>
-                <h2>{{ content.title }}</h2>
-                <p>{{ content.description }}</p>
+                        {% if content.content_type == 'text' %}
+                            <p class="text-content">{{ content.text_content }}</p>
+                        {% elif content.content_type == 'image' %}
+                            <img src="{{ content.image.url }}" alt="{{ content.title|title }}" class="img-fluid">
+                        {% elif content.content_type == 'video' %}
+                            <video controls class="w-100">
+                                <source src="{{ content.video.url }}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        {% endif %}
 
-                {% if content.content_type == 'text' %}
-                    <p>{{ content.text_content }}</p>
-                {% elif content.content_type == 'image' %}
-                    <img src="{{ content.image.url }}" alt="{{ content.title|title }}">
-                {% elif content.content_type == 'video' %}
-                    <video controls>
-                        <source src="{{ content.video.url }}" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                {% endif %}
+                        <small class="text-muted d-block mt-3">
+                            Uploaded by: 
+                            {% if content.uploaded_by %}
+                                {{ content.uploaded_by.username }}
+                            {% else %}
+                                Unknown
+                            {% endif %}
+                        </small>
+                        <small class="text-muted">Uploaded on: {{ content.created_at }}</small>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-center">No contents available for this course yet.</p>
+    {% endif %}
 
-                <!-- Updated logic for uploaded_by -->
-                <small>
-                    Uploaded by: 
-                    {% if content.uploaded_by %}
-                        {{ content.uploaded_by.username }}
-                    {% else %}
-                        Unknown
-                    {% endif %}
-                </small>
-                <small> | Uploaded on: {{ content.created_at }}</small>
-            </li>
-        {% endfor %}
-    </ul>
-
-    <a href="{% url 'main:courses:course_detail' course.id %}">Back</a>
-
+    <div class="mt-4">
+        <a href="{% url 'main:courses:course_detail' course.id %}" class="btn btn-secondary">Back</a>
+    </div>
+</div>
 {% endblock %}

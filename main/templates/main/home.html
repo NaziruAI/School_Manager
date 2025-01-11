@@ -5,7 +5,7 @@
     <section id="banner" class="container-fluid bg-primary text-white text-center py-5">
         <h2 class="display-4">LIGHT COUNSELLING CENTER AND EDUCATIONAL SERVICES</h2>
         <p class="lead">MOTTO: <strong></strong>A healthy life awaits for you</p>
-        <a href="#register" class="btn btn-light btn-lg">Get Started</a>
+        <a href="{% url 'main:courses:courses' %}" class="btn btn-light btn-lg">Explore Skills</a>
     </section>
 
     <!-- Image Gallery Section -->
@@ -13,7 +13,7 @@
         <h2 class="text-center mb-4">Awesome! See Our Great Skills</h2>
         <div class="row">
             {% for image in gallery_images %}
-            <div class="col-lg-3 col-md-4 col-6 mb-4">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
                 <div class="card">
                     <!-- Use class "img-gallery" to style -->
                     <img src="{{ image.image.url }}" class="card-img-top img-fluid img-gallery" alt="{{ image.title }}">
@@ -24,30 +24,27 @@
     </section>
 
     <section id="about" class="container py-5">
-        <h2 class="text-center">About School Manager</h2>
-        <p class="text-center">School Manager is a platform where students and teachers collaborate for effective learning.</p>
+        <h2 class="text-center">About The Center Site</h2>
+        <p class="text-center">Light Counselling Center and Educational Services is a platform where trainees and trainers collaborate for effective learning. We offer diverse courses, such as Leatherwork, Agriculture, and Poultry, aimed at fostering skills for a sustainable and rewarding future.</p>
     </section>
 
     <section id="courses" class="container py-5">
         <h2 class="text-center">Featured Courses</h2>
         <div class="row">
             <div class="col-md-4">
-                <h4>Python Programming</h4>
-                <p>Master programming with Python.</p>
+                <h4>Leather Work </h4>
+                <p>Master how to make shoes and bags.</p>
             </div>
             <div class="col-md-4">
-                <h4>Web Development</h4>
-                <p>Build websites from scratch.</p>
+                <h4>Poultry</h4>
+                <p>Know your way to have meat in your hand easily.</p>
             </div>
             <div class="col-md-4">
-                <h4>Data Science</h4>
-                <p>Learn data analysis and visualization.</p>
+                <h4>Agriculture</h4>
+                <p>You can not get food without farming.</p>
             </div>
         </div>
     </section>
 </main>
 
-<footer class="bg-dark text-white text-center py-4">
-    <p>&copy; 2025 School Manager. All rights reserved.</p>
-</footer>
 {% endblock content %}

@@ -8,6 +8,7 @@ urlpatterns = [
     path('users/', include(('users.urls', 'users'), namespace='users')),  # Ensure 'include' is used correctly
      path('courses/', include('courses.urls', namespace='courses')),  # Include course app routes
      path('contents/', include('contents.urls', namespace='contents')),
+      path('about/', views.about, name='about'),  # URL pattern for the About page
 ]
 
 from django.conf import settings
